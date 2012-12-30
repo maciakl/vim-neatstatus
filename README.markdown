@@ -12,7 +12,19 @@ to make this script compatible with Pathogen plugin manager.
 Screenshots
 -----------
 
+Here is how this status line will look in Gvim on Windows with the Solarized color scheme:
+
 ![Neat Statusline][ns]
+
+Information provided from left to right:
+
+* File name
+* File type
+* Buffer number
+* Absolute line number
+* Total number of lines in file
+* Relative column number (from first character)
+* Absolute column number (from start of line)
 
 Installation
 ---
