@@ -9,6 +9,11 @@ The original can be seen here:
 This version has small readability modifications. Main purposed of hosting it here is
 to make this script compatible with Pathogen plugin manager.
 
+Screenshots
+-----------
+
+![Neat Statusline][ns]
+
 Installation
 ---
 
@@ -27,3 +32,5 @@ If your .vim is under source control with Git do this instead:
 Installing without pathogen:
 
   * Copy `neatstatus.vim` to `~/.vim/plugins` directory
+
+  [ns]: http://i.imgur.com/OuhYB.jpg "Neat Statusline"
