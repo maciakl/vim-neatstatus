@@ -30,9 +30,9 @@ if has('statusline')
 	" %l/%L,%c%V   line number, total number of lines, and column number
 	function SetStatusLineStyle()
 		if &stl == '' || &stl =~ 'synID'
-			let &stl="%f %y%([%R%M]%)%{'!'[&ff=='".&ff."']}%{'$'[!&list]}%{'~'[&pm=='']}%=buff:#%n line:%l/%L col:%c%V "
+			let &stl="%f %y%([%R%M]%)%{'!'[&ff=='".&ff."']}%{'$'[!&list]}%{'~'[&pm=='']}%=buff: #%n line: %l/%L col(rel-abs): %c%V "
 		else
-			let &stl="%f %y%([%R%M]%)%{'!'[&ff=='".&ff."']}%{'$'[!&list]} (%{synIDattr(synID(line('.'),col('.'),0),'name')})%=buff:#%n line:%l/%L col%c%V "
+			let &stl="%f %y%([%R%M]%)%{'!'[&ff=='".&ff."']}%{'$'[!&list]} (%{synIDattr(synID(line('.'),col('.'),0),'name')})%=buff:#%n line:%l/%L col(rel-abs): %c%V "
 		endif
 	endfunc
 
