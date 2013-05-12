@@ -33,7 +33,28 @@ if has('statusline')
 	" %c%V  column number, absolute column number
 	"
 	function! SetStatusLineStyle()
-			let &stl="%f %([%R%M]%) %= %{&filetype}%{'!'[&ff=='".&ff."']} | %{&fileformat} | BUF #%n | LN %l/%L | (%p%%) | COL %c%V "
+
+		    " file path
+			let &stl="%f "
+			" read only, modified, modifiable flags in brackets
+			let &stl.="%([%R%M]%) "
+
+			" right-aligh everything past this point
+			let &stl.="%= "
+
+			" file type (eg. python, ruby, etc..)
+			let &stl.="%{&filetype}%{'!'[&ff=='".&ff."']} | "
+			" file format (eg. unix, dos, etc..)
+			let &stl.="%{&fileformat} | "
+			" buffer number
+			let &stl.="BUF #%n | " 
+			"line number / total lines
+			let &stl.="LN %l/%L | "
+			" percentage done
+			let &stl.="(%p%%) | "
+			" column number
+			let &stl.="COL %c%V "
+
 	endfunc
 
 	" Switch between the normal and vim-debug modes in the status line
