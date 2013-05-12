@@ -42,10 +42,14 @@ if has('statusline')
 			" right-aligh everything past this point
 			let &stl.="%= "
 
+            " if not native display [!]
+            let &stl.="%{'!'[&ff=='".&ff."']} | "
 			" file type (eg. python, ruby, etc..)
-			let &stl.="%{&filetype}%{'!'[&ff=='".&ff."']} | "
+			let &stl.="%(%{&filetype} | %)"
 			" file format (eg. unix, dos, etc..)
 			let &stl.="%{&fileformat} | "
+			" file encoding (eg. utf8)
+			let &stl.="%(%{&fileencoding} | %)"
 			" buffer number
 			let &stl.="BUF #%n | " 
 			"line number / total lines
