@@ -20,6 +20,7 @@ Information provided from left to right:
 
 * File name
 * File type
+* File format (unix, dos, etc..)
 * Buffer number
 * Absolute line number
 * Total number of lines in file
@@ -45,4 +46,4 @@ Installing without pathogen:
 
   * Copy `neatstatus.vim` to `~/.vim/plugins` directory
 
-  [ns]: http://i.imgur.com/OuhYB.jpg "Neat Statusline"
+  [ns]: http://i.imgur.com/M1DEloh.jpg "Neat Statusline"

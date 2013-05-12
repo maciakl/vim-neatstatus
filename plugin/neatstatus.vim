@@ -12,6 +12,7 @@ if has('statusline')
 	"
 	" %f     file path
 	" %y     file type between braces (if defined)
+	"
 	" %([%R%M]%)   read-only, modified and modifiable flags between braces
 	"
 	" %{'!'[&ff=='default_file_format']}
@@ -20,20 +21,19 @@ if has('statusline')
 	" %{'$'[!&list]}  shows a '*' if in list mode
 	" %{'~'[&pm=='']} shows a '~' if in patchmode
 	"
-	" (%{synIDattr(synID(line('.'),col('.'),0),'name')})
-	"        only for debug : display the current syntax item name
-	"
 	" %=     right-align following items
 	"
-	" #%n    buffer number
+	" %{&fileencoding}  displays encoding (like utf8)
+	" %{&fileformat}    displays file format (unix, dos, etc..)
+	" %{&filetype}      displays file type (vim, python, etc..)
 	"
-	" %l/%L,%c%V   line number, total number of lines, and column number
-	function SetStatusLineStyle()
-		if &stl == '' || &stl =~ 'synID'
-			let &stl="%f %y%([%R%M]%)%{'!'[&ff=='".&ff."']}%{'$'[!&list]}%{'~'[&pm=='']}%=buff:#%n line:%l/%L col:%c%V "
-		else
-			let &stl="%f %y%([%R%M]%)%{'!'[&ff=='".&ff."']}%{'$'[!&list]} (%{synIDattr(synID(line('.'),col('.'),0),'name')})%=buff:#%n line:%l/%L col%c%V "
-		endif
+	" #%n   buffer number
+	" %l/%L line number, total number of lines
+	" %p%   percentage of file
+	" %c%V  column number, absolute column number
+	"
+	function! SetStatusLineStyle()
+			let &stl="%f %([%R%M]%) %= %{&filetype}%{'!'[&ff=='".&ff."']} | %{&fileformat} | BUF #%n | LN %l/%L | (%p%%) | COL %c%V "
 	endfunc
 
 	" Switch between the normal and vim-debug modes in the status line
