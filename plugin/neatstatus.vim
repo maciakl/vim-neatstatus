@@ -36,14 +36,14 @@ if has('statusline')
 
 		    " file path
 			let &stl="%f "
+            " if not native display !
+            let &stl.="%(%{'!'[&ff=='".&ff."']}"
 			" read only, modified, modifiable flags in brackets
 			let &stl.="%([%R%M]%) "
 
 			" right-aligh everything past this point
 			let &stl.="%= "
 
-            " if not native display [!]
-            let &stl.="%{'!'[&ff=='".&ff."']} | "
 			" file type (eg. python, ruby, etc..)
 			let &stl.="%(%{&filetype} | %)"
 			" file format (eg. unix, dos, etc..)
