@@ -30,8 +30,6 @@ endfunc
 
 function! ModeChanged(mode)
 
-    echom a:mode
-
     if     a:mode ==# "n"  | hi User1 guifg=#000000 guibg=#7dcc7d ctermfg=0 ctermbg=2
     elseif a:mode ==# "i"  | hi User1 guifg=#870000 guibg=#f4905c ctermfg=9 ctermbg=172
     elseif a:mode ==# "r"  | hi User1 guifg=#ffff00 guibg=#5b7fbb ctermfg=190 ctermbg=67
