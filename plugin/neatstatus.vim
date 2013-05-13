@@ -19,8 +19,8 @@ function! Mode()
     elseif mode ==# "i"  | return "INSERT"
     elseif mode ==# "R"  | return "REPLACE"
     elseif mode ==# "v"  | return "VISUAL"
-    elseif mode ==# "V"  | return "V·LINE"
-    elseif mode ==# "^V" | return "V·BLOCK"
+    elseif mode ==# "V"  | return "Vï¿½LINE"
+    elseif mode ==# "^V" | return "Vï¿½BLOCK"
     else                 | return l:mode
     endfunc    
 
@@ -31,7 +31,7 @@ function! Mode()
             return 'unmodified'
         else
             return 'modified'
-        endfunc
+    endfunc
 
         if has('statusline')
 
