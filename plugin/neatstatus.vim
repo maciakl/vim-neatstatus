@@ -6,6 +6,19 @@
 
 set ls=2 " Always show status line
 
+" pretty mode display
+function! Mode()
+    let l:mode = mode()
+
+    if     mode ==# "n"  | return "NORMAL"
+    elseif mode ==# "i"  | return "INSERT"
+    elseif mode ==# "R"  | return "REPLACE"
+    elseif mode ==# "v"  | return "VISUAL"
+    elseif mode ==# "V"  | return "V·LINE"
+    elseif mode ==# "^V" | return "V·BLOCK"
+    else                 | return l:mode
+endfunc     
+
 if has('statusline')
 
 	" Status line detail:
@@ -34,12 +47,13 @@ if has('statusline')
 	"
 	function! SetStatusLineStyle()
 
+            let &stl=""
+            " mode
+            let &stl.=" %{Mode()} | " 
 		    " file path
-			let &stl="%f "
-            " if not native display !
-            let &stl.="%(%{'!'[&ff=='".&ff."']}"
+            let &stl.="%f "
 			" read only, modified, modifiable flags in brackets
-			let &stl.="%([%R%M]%) "
+            let &stl.="%([%R%M]%) "
 
 			" right-aligh everything past this point
 			let &stl.="%= "
@@ -48,8 +62,8 @@ if has('statusline')
 			let &stl.="%(%{&filetype} | %)"
 			" file format (eg. unix, dos, etc..)
 			let &stl.="%{&fileformat} | "
-			" file encoding (eg. utf8)
-			let &stl.="%(%{&fileencoding} | %)"
+			" file encoding (eg. utf8, latin1, etc..)
+			let &stl.="%(%{(&fenc!=''?&fenc:&enc)} | %)"
 			" buffer number
 			let &stl.="BUF #%n | " 
 			"line number / total lines
