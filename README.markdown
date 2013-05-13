@@ -18,14 +18,17 @@ Here is how this status line will look in Gvim on Windows with the Solarized col
 
 Information provided from left to right:
 
-* File name
-* File type
-* File format (unix, dos, etc..)
+* Vim Mode (green box)
+* File path
+* File type (eg. python, ruby, etc..)
+* File format (eg. unix, dos, etc..)
+* File encoding (eg. utf8, latin1, etc..)
 * Buffer number
-* Absolute line number
-* Total number of lines in file
+* Current line, total number of lines (purple box)
+* Percentage of file read
 * Relative column number (from first character)
 * Absolute column number (from start of line)
+* Modified / Unmodified (blue box)
 
 Installation
 ---
@@ -46,4 +49,4 @@ Installing without pathogen:
 
   * Copy `neatstatus.vim` to `~/.vim/plugins` directory
 
-  [ns]: http://i.imgur.com/M1DEloh.jpg "Neat Statusline"
+  [ns]: http://i.imgur.com/DkU6RNP.jpg "Neat Statusline"

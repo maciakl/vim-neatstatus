@@ -82,11 +82,11 @@ if has('statusline')
 			" buffer number
 			let &stl.="BUF #%n |" 
 			"line number / total lines
-			let &stl.="%4* LN %l/%L\ %0*|"
+			let &stl.="%4* LN %l/%L\ %0*| "
 			" percentage done
 			let &stl.="(%p%%) | "
 			" column number
-			let &stl.="COL %c%V "
+			let &stl.="COL %c%V |"
             " modified / unmodified (purple)
             let &stl.="%2* %{Modified()} "
 	endfunc
