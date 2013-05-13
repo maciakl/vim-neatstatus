@@ -6,6 +6,11 @@
 
 set ls=2 " Always show status line
 
+hi User1 guibg=#7dcc7d                  " GREEN
+hi User2 guifg=#ffffff  guibg=#5b7fbb   " BLUE
+hi User3 guifg=#ffffff  guibg=#F4905C   " ORANGE
+hi User4 guifg=#ffffff  guibg=#810085   " PURPLE
+
 " pretty mode display
 function! Mode()
     let l:mode = mode()
@@ -17,14 +22,24 @@ function! Mode()
     elseif mode ==# "V"  | return "V·LINE"
     elseif mode ==# "^V" | return "V·BLOCK"
     else                 | return l:mode
-endfunc     
+endfunc    
+
+function! Modified()
+    let l:modified = &modified
+
+    if modified == 0
+    	return 'unmodified'
+    else
+    	return 'modified'
+endfunc
 
 if has('statusline')
 
 	" Status line detail:
 	"
-	" %f     file path
-	" %y     file type between braces (if defined)
+	" %f     file name
+	" %F    file path
+	" %y    file type between braces (if defined)
 	"
 	" %([%R%M]%)   read-only, modified and modifiable flags between braces
 	"
@@ -49,9 +64,9 @@ if has('statusline')
 
             let &stl=""
             " mode
-            let &stl.=" %{Mode()} | " 
+            let &stl.="%1*\ %{Mode()} %0* " 
 		    " file path
-            let &stl.="%f "
+            let &stl.="%F "
 			" read only, modified, modifiable flags in brackets
             let &stl.="%([%R%M]%) "
 
@@ -65,14 +80,15 @@ if has('statusline')
 			" file encoding (eg. utf8, latin1, etc..)
 			let &stl.="%(%{(&fenc!=''?&fenc:&enc)} | %)"
 			" buffer number
-			let &stl.="BUF #%n | " 
+			let &stl.="BUF #%n |" 
 			"line number / total lines
-			let &stl.="LN %l/%L | "
+			let &stl.="%4* LN %l/%L\ %0*|"
 			" percentage done
 			let &stl.="(%p%%) | "
 			" column number
 			let &stl.="COL %c%V "
-
+            " modified / unmodified (purple)
+            let &stl.="%2* %{Modified()} "
 	endfunc
 
 	" Switch between the normal and vim-debug modes in the status line
