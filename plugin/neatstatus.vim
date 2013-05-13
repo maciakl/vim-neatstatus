@@ -5,11 +5,13 @@
 " http://winterdom.com/2007/06/vimstatusline
 
 set ls=2 " Always show status line
+let g:last_mode=""
 
 hi User1 guibg=#7dcc7d                  " GREEN
 hi User2 guifg=#ffffff  guibg=#5b7fbb   " BLUE
 hi User3 guifg=#ffffff  guibg=#F4905C   " ORANGE
 hi User4 guifg=#ffffff  guibg=#810085   " PURPLE
+hi User5 guifg=#ffffff  guibg=#000000   " BKACK
 
 " pretty mode display
 function! Mode()
@@ -22,13 +24,14 @@ function! Mode()
     elseif mode ==# "V"  | return "V·LINE"
     elseif mode ==# "^V" | return "V·BLOCK"
     else                 | return l:mode
+    endif
     endfunc    
 
     function! Modified()
         let l:modified = &modified
 
         if modified == 0
-            return 'unmodified'
+            return ''
         else
             return 'modified'
         endfunc
@@ -64,7 +67,7 @@ function! Mode()
 
                 let &stl=""
                 " mode
-                let &stl.="%1*\ %{Mode()} %0* " 
+                let &stl.="%5*\ %{Mode()} %0*| " 
                 " file path
                 let &stl.="%F "
                 " read only, modified, modifiable flags in brackets
@@ -88,7 +91,7 @@ function! Mode()
                 " column number
                 let &stl.="COL %c%V |"
                 " modified / unmodified (purple)
-                let &stl.="%2* %{Modified()} "
+                let &stl.="%(%2* %{Modified()}%)"
             endfunc
 
             " Switch between the normal and vim-debug modes in the status line
