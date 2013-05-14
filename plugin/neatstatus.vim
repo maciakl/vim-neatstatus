@@ -15,7 +15,7 @@ hi User4 guifg=#ffffff  guibg=#810085   ctermfg=15 ctermbg=53   " WHITE ON PURPL
 hi User5 guifg=#ffffff  guibg=#000000   ctermfg=15 ctermbg=0    " WHITE ON BLACK
 hi User6 guifg=#ffffff  guibg=#ff00ff   ctermfg=15 ctermbg=5    " WHITE ON PINK
 hi User7 guifg=#ff00ff  guibg=#000000   ctermfg=207 ctermbg=0 gui=bold cterm=bold   " PINK ON BLACK
-hi User8 guifg=#000000  guibg=#00ffff   ctermfg=0 ctermbg=51 gui=bold cterm=bold   " PINK ON BLACK
+hi User8 guifg=#000000  guibg=#00ffff   ctermfg=0 ctermbg=51 gui=bold cterm=bold    " BLACK ON CYAN
 
 " pretty mode display - converts the one letter status notifiers to words
 function! Mode()
