@@ -106,7 +106,7 @@ if has('statusline')
         let &stl.="%(%{(&ro!=0?'(readonly)':'')} | %)"
 
         " file type (eg. python, ruby, etc..)
-        let &stl.="%(%8* %{&filetype} %0*| %)"
+        let &stl.="%8*%( %{&filetype} %)%0*| "
         " file format (eg. unix, dos, etc..)
         let &stl.="%{&fileformat} | "
         " file encoding (eg. utf8, latin1, etc..)
