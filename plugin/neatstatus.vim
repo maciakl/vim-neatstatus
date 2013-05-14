@@ -10,11 +10,12 @@ let g:last_mode=""
 " Basic color presets
 hi User1 guifg=#000000  guibg=#7dcc7d   ctermfg=0  ctermbg=2    " BLACK ON GREEN
 hi User2 guifg=#ffffff  guibg=#5b7fbb   ctermfg=15 ctermbg=67   " WHITE ON BLUE
-hi User3 guifg=#ffffff  guibg=#F4905C   ctermfg=15 ctermbg=9    " BLACK ON ORANGE
+hi User3 guifg=#000000  guibg=#FF0000   ctermfg=15 ctermbg=9    " BLACK ON ORANGE
 hi User4 guifg=#ffffff  guibg=#810085   ctermfg=15 ctermbg=53   " WHITE ON PURPLE
 hi User5 guifg=#ffffff  guibg=#000000   ctermfg=15 ctermbg=0    " WHITE ON BLACK
 hi User6 guifg=#ffffff  guibg=#ff00ff   ctermfg=15 ctermbg=5    " WHITE ON PINK
-hi User7 guifg=#ff00ff  guibg=#000000   ctermfg=183 ctermbg=0   " PINK ON BLACK
+hi User7 guifg=#ff00ff  guibg=#000000   ctermfg=207 ctermbg=0 gui=bold cterm=bold   " PINK ON BLACK
+hi User8 guifg=#000000  guibg=#00ffff   ctermfg=0 ctermbg=51 gui=bold cterm=bold   " PINK ON BLACK
 
 " pretty mode display - converts the one letter status notifiers to words
 function! Mode()
@@ -35,7 +36,7 @@ endfunc
 function! ModeChanged(mode)
 
     if     a:mode ==# "n"  | hi User1 guifg=#000000 guibg=#7dcc7d gui=NONE ctermfg=0 ctermbg=2 cterm=NONE
-    elseif a:mode ==# "i"  | hi User1 guifg=#000000 guibg=#f4905c gui=bold ctermfg=0 ctermbg=172 cterm=bold
+    elseif a:mode ==# "i"  | hi User1 guifg=#ffffff guibg=#ff0000 gui=bold ctermfg=15 ctermbg=9 cterm=bold
     elseif a:mode ==# "r"  | hi User1 guifg=#ffff00 guibg=#5b7fbb gui=bold ctermfg=190 ctermbg=67 cterm=bold
     "elseif a:mode ==# "v"  | hi User1 guifg=#ffffff guibg=#810085 ctermfg=15 ctermbg=53
     "elseif a:mode ==# "V"  | hi User1 guifg=#ffffff guibg=#810085 ctermfg=15 ctermbg=53
@@ -105,7 +106,7 @@ if has('statusline')
         let &stl.="%(%{(&ro!=0?'(readonly)':'')} | %)"
 
         " file type (eg. python, ruby, etc..)
-        let &stl.="%(%{&filetype} | %)"
+        let &stl.="%(%8* %{&filetype} %0*| %)"
         " file format (eg. unix, dos, etc..)
         let &stl.="%{&fileformat} | "
         " file encoding (eg. utf8, latin1, etc..)
