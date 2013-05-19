@@ -19,6 +19,7 @@ Here is how this status line will look in Gvim on Windows with the Solarized col
 Information provided from left to right:
 
 * Vim Mode (green box)
+* Server name / session name (black box)
 * File path
 * File type (eg. python, ruby, etc..)
 * File format (eg. unix, dos, etc..)
@@ -49,4 +50,4 @@ Installing without pathogen:
 
   * Copy `neatstatus.vim` to `~/.vim/plugins` directory
 
-  [ns]: http://i.imgur.com/DkU6RNP.jpg "Neat Statusline"
+  [ns]: http://i.imgur.com/7ySiHql.png "Neat Statusline"

@@ -64,6 +64,8 @@ if has('statusline')
     " %F    file path
     " %y    file type between braces (if defined)
     "
+    " %{v:servername}   server/session name (gvim only)
+    "
     " %<    collapse to the left if window is to small
     "
     " %( %) display contents only if not empty
@@ -93,9 +95,13 @@ if has('statusline')
 
         let &stl=""
         " mode (changes color)
-        let &stl.="%1*\ %{Mode()} %0*| " 
+        let &stl.="%1*\ %{Mode()} %0*|" 
+        " session name
+        if v:servername!=''
+            let &stl.="%5* %{v:servername} %0*|"
+        endif
         " file path
-        let &stl.="%<%F "
+        let &stl.=" %<%F "
         " read only, modified, modifiable flags in brackets
         let &stl.="%([%R%M]%) "
 
