@@ -140,6 +140,6 @@ if has('statusline')
     call SetStatusLineStyle()
     " Window title
     if has('title')
-        set titlestring=%t%(\ [%R%M]%)
+        set titlestring="%t%(\ [%R%M]%)".expand(v:servername)
     endif
 endif
