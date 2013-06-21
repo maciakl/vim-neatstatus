@@ -97,9 +97,7 @@ if has('statusline')
         " mode (changes color)
         let &stl.="%1*\ %{Mode()} %0*|" 
         " session name
-        if v:servername!=''
-            let &stl.="%5* %{v:servername} %0*|"
-        endif
+        let &stl.="%5* %{v:servername} %0*|"
         " file path
         let &stl.=" %<%F "
         " read only, modified, modifiable flags in brackets
