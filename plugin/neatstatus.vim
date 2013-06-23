@@ -8,14 +8,14 @@ set ls=2 " Always show status line
 let g:last_mode=""
 
 " Basic color presets
-hi User1 guifg=#000000  guibg=#7dcc7d   ctermfg=0  ctermbg=2    " BLACK ON GREEN
-hi User2 guifg=#ffffff  guibg=#5b7fbb   ctermfg=15 ctermbg=67   " WHITE ON BLUE
-hi User3 guifg=#000000  guibg=#FF0000   ctermfg=15 ctermbg=9    " BLACK ON ORANGE
-hi User4 guifg=#ffffff  guibg=#810085   ctermfg=15 ctermbg=53   " WHITE ON PURPLE
-hi User5 guifg=#ffffff  guibg=#000000   ctermfg=15 ctermbg=0    " WHITE ON BLACK
-hi User6 guifg=#ffffff  guibg=#ff00ff   ctermfg=15 ctermbg=5    " WHITE ON PINK
-hi User7 guifg=#ff00ff  guibg=#000000   ctermfg=207 ctermbg=0 gui=bold cterm=bold   " PINK ON BLACK
-hi User8 guifg=#000000  guibg=#00ffff   ctermfg=0 ctermbg=51 gui=bold cterm=bold    " BLACK ON CYAN
+hi User1 guifg=#000000  guibg=#7dcc7d   ctermfg=0  	ctermbg=2						" BLACK ON GREEN
+hi User2 guifg=#ffffff  guibg=#5b7fbb   ctermfg=15	ctermbg=67						" WHITE ON BLUE
+hi User3 guifg=#000000  guibg=#FF0000   ctermfg=15	ctermbg=9						" BLACK ON ORANGE
+hi User4 guifg=#ffffff  guibg=#810085   ctermfg=15	ctermbg=53						" WHITE ON PURPLE
+hi User5 guifg=#ffffff  guibg=#000000   ctermfg=15	ctermbg=0						" WHITE ON BLACK
+hi User6 guifg=#ffffff  guibg=#ff00ff   ctermfg=15	ctermbg=5						" WHITE ON PINK
+hi User7 guifg=#ff00ff  guibg=#000000   ctermfg=207	ctermbg=0	gui=bold cterm=bold " PINK ON BLACK
+hi User8 guifg=#000000  guibg=#00ffff   ctermfg=0	ctermbg=51	gui=bold cterm=bold " BLACK ON CYAN
 
 " pretty mode display - converts the one letter status notifiers to words
 function! Mode()
@@ -123,9 +123,9 @@ if has('statusline')
         
     endfunc
 
-    au InsertEnter * call ModeChanged(v:insertmode)
+    au InsertEnter  * call ModeChanged(v:insertmode)
     au InsertChange * call ModeChanged(v:insertmode)
-    au InsertLeave * call ModeChanged(mode())
+    au InsertLeave  * call ModeChanged(mode())
 
     " Switch between the normal and vim-debug modes in the status line
     nmap _ds :call SetStatusLineStyle()<CR>
