@@ -43,7 +43,12 @@ function! ModeChanged(mode)
     "elseif a:mode ==# "^V" | hi User1 guifg=#ffffff guibg=#810085 ctermfg=15 ctermbg=53
     else                   | hi User1 guifg=#ffffff guibg=#810085 gui=NONE ctermfg=15 ctermbg=53 cterm=NONE
     endif
-
+   
+    " Sometimes in console the status line starts repeating so we redraw
+    " there is probably a better way to fix this
+    if !has('gui_running')
+    	redraw!
+    endif
 endfunc
 
 " Return a string if file is modified or empty string if its not
