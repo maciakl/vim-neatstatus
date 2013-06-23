@@ -1,6 +1,7 @@
 " NeatStatus (c) 2012 Lukasz Grzegorz Maciak
+" Neat and simple status line - because Powerline is overrated
 "
-" Based on a script by Tomas Restrepo (winterdom.com)
+" Loosely based on a script by Tomas Restrepo (winterdom.com)
 " " Original available here:
 " http://winterdom.com/2007/06/vimstatusline
 
@@ -88,11 +89,13 @@ if has('statusline')
     "
     function! SetStatusLineStyle()
 
+		let g:neatstatus_session = v:servername==''?'term':v:servername
+
         let &stl=""
         " mode (changes color)
         let &stl.="%1*\ %{Mode()} %0*|" 
         " session name
-        let &stl.="%5* %{v:servername} %0*|"
+        let &stl.="%5* %{g:neatstatus_session} %0*|"
         " file path
         let &stl.=" %<%F "
         " read only, modified, modifiable flags in brackets
