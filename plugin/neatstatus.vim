@@ -51,16 +51,6 @@ function! ModeChanged(mode)
     endif
 endfunc
 
-" Return a string if file is modified or empty string if its not
-function! Modified()
-    let l:modified = &modified
-
-    if modified == 0
-        return ''
-    else
-        return 'modified'
-endfunc
-
 if has('statusline')
 
     " Status line detail:
@@ -129,8 +119,7 @@ if has('statusline')
         " column number
         let &stl.="COL %c%V |"
         " modified / unmodified (purple)
-        let &stl.="%(%6* %{Modified()} %)"
-
+        let &stl.="%(%6* %{&modified ? 'modified':''} %)"
         
     endfunc
 
