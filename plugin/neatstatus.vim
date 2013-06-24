@@ -129,6 +129,7 @@ if has('statusline')
     au InsertEnter  * call ModeChanged(v:insertmode)
     au InsertChange * call ModeChanged(v:insertmode)
     au InsertLeave  * call ModeChanged(mode())
+    au BufRead,BufNew * call SetStatusLineStyle()
 
     " Switch between the normal and vim-debug modes in the status line
     nmap _ds :call SetStatusLineStyle()<CR>
