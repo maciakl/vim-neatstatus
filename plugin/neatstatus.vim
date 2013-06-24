@@ -89,7 +89,6 @@ if has('statusline')
     "
     function! SetStatusLineStyle()
 
-		let g:neatstatus_session = strlen(v:servername)>0? (v:servername) : 'term'
 
         let &stl=""
         " mode (changes color)
@@ -134,6 +133,9 @@ if has('statusline')
     nmap _ds :call SetStatusLineStyle()<CR>
     call SetStatusLineStyle()
     " Window title
+    
+    let g:neatstatus_session = strlen(v:servername)>0? (v:servername) : 'term'
+
     if has('title')
         set titlestring="%t%(\ [%R%M]%)".expand(v:servername)
     endif
