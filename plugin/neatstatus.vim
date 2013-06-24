@@ -134,6 +134,7 @@ if has('statusline')
     call SetStatusLineStyle()
     " Window title
     
+    echom v:servername
     let g:neatstatus_session = strlen(v:servername)>0? (v:servername) : 'term'
 
     if has('title')
