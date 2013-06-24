@@ -89,7 +89,7 @@ if has('statusline')
     "
     function! SetStatusLineStyle()
 
-		let g:neatstatus_session = v:servername==''?'term':v:servername
+		let g:neatstatus_session = v:servername==#""?'term':v:servername
 
         let &stl=""
         " mode (changes color)
