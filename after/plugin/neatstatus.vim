@@ -86,6 +86,7 @@ if has('statusline')
     " %l/%L line number, total number of lines
     " %p%   percentage of file
     " %c%V  column number, absolute column number
+    " &modified         whether or not file was modified
     "
     function! SetStatusLineStyle()
 
@@ -129,7 +130,11 @@ if has('statusline')
     au InsertEnter  * call ModeChanged(v:insertmode)
     au InsertChange * call ModeChanged(v:insertmode)
     au InsertLeave  * call ModeChanged(mode())
-    au BufRead,BufNew * call SetStatusLineStyle()
+
+    " Make sure the styling is re-applied whenever a new buffer is opened or
+    " file is written to disk. This ensures colors are not lost and that the
+    " servername value is updated appropriately
+    au BufRead,BufNew,BufWritePost,FileWritePost * call SetStatusLineStyle()
 
     " Switch between the normal and vim-debug modes in the status line
     nmap _ds :call SetStatusLineStyle()<CR>
