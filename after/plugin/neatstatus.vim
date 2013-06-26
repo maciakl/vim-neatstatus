@@ -8,15 +8,20 @@
 set ls=2 " Always show status line
 let g:last_mode=""
 
-" Basic color presets
-hi User1 guifg=#000000  guibg=#7dcc7d   ctermfg=0  	ctermbg=2						" BLACK ON GREEN
-hi User2 guifg=#ffffff  guibg=#5b7fbb   ctermfg=15	ctermbg=67						" WHITE ON BLUE
-hi User3 guifg=#000000  guibg=#FF0000   ctermfg=15	ctermbg=9						" BLACK ON ORANGE
-hi User4 guifg=#ffffff  guibg=#810085   ctermfg=15	ctermbg=53						" WHITE ON PURPLE
-hi User5 guifg=#ffffff  guibg=#000000   ctermfg=15	ctermbg=0						" WHITE ON BLACK
-hi User6 guifg=#ffffff  guibg=#ff00ff   ctermfg=15	ctermbg=5						" WHITE ON PINK
-hi User7 guifg=#ff00ff  guibg=#000000   ctermfg=207	ctermbg=0	gui=bold cterm=bold " PINK ON BLACK
-hi User8 guifg=#000000  guibg=#00ffff   ctermfg=0	ctermbg=51	gui=bold cterm=bold " BLACK ON CYAN
+" Set up the colors for the status bar
+function! SetNeatstatusColorscheme()
+
+    " Basic color presets
+    hi User1 guifg=#000000  guibg=#7dcc7d   ctermfg=0  	ctermbg=2						" BLACK ON GREEN
+    hi User2 guifg=#ffffff  guibg=#5b7fbb   ctermfg=15	ctermbg=67						" WHITE ON BLUE
+    hi User3 guifg=#000000  guibg=#FF0000   ctermfg=15	ctermbg=9						" BLACK ON ORANGE
+    hi User4 guifg=#ffffff  guibg=#810085   ctermfg=15	ctermbg=53						" WHITE ON PURPLE
+    hi User5 guifg=#ffffff  guibg=#000000   ctermfg=15	ctermbg=0						" WHITE ON BLACK
+    hi User6 guifg=#ffffff  guibg=#ff00ff   ctermfg=15	ctermbg=5						" WHITE ON PINK
+    hi User7 guifg=#ff00ff  guibg=#000000   ctermfg=207	ctermbg=0	gui=bold cterm=bold " PINK ON BLACK
+    hi User8 guifg=#000000  guibg=#00ffff   ctermfg=0	ctermbg=51	gui=bold cterm=bold " BLACK ON CYAN
+
+endfunc
 
 " pretty mode display - converts the one letter status notifiers to words
 function! Mode()
@@ -131,9 +136,13 @@ if has('statusline')
     au InsertChange * call ModeChanged(v:insertmode)
     au InsertLeave  * call ModeChanged(mode())
 
-    " Make sure the styling is re-applied whenever a new buffer is opened or
-    " file is written to disk. This ensures colors are not lost and that the
-    " servername value is updated appropriately
+    " whenever the color scheme changes re-apply the colors
+    au ColorScheme * call SetNeatstatusColorscheme()
+   
+    " Reset the status bar on startup and when reading or writing a file.
+    " Some of this is probably not needed; This is done to ensure the
+    " servername gets picked up when vim actually displays a file. More tweaks
+    " needed here.
     au BufRead,BufNew,BufWritePost,FileWritePost,ColorScheme,VimEnter * call SetStatusLineStyle()
 
     " Switch between the normal and vim-debug modes in the status line
