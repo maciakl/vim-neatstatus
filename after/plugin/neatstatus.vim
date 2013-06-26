@@ -8,6 +8,12 @@
 set ls=2 " Always show status line
 let g:last_mode=""
 
+" set up color scheme now
+call SetNeatstatusColorscheme()
+
+"==============================================================================
+"==============================================================================
+
 " Set up the colors for the status bar
 function! SetNeatstatusColorscheme()
 
@@ -56,6 +62,9 @@ function! ModeChanged(mode)
     	redraw!
     endif
 endfunc
+
+"==============================================================================
+"==============================================================================
 
 if has('statusline')
 
