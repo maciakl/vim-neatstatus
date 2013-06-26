@@ -134,7 +134,7 @@ if has('statusline')
     " Make sure the styling is re-applied whenever a new buffer is opened or
     " file is written to disk. This ensures colors are not lost and that the
     " servername value is updated appropriately
-    au BufRead,BufNew,BufWritePost,FileWritePost * call SetStatusLineStyle()
+    au BufRead,BufNew,BufWritePost,FileWritePost,ColorScheme,VimEnter * call SetStatusLineStyle()
 
     " Switch between the normal and vim-debug modes in the status line
     nmap _ds :call SetStatusLineStyle()<CR>
