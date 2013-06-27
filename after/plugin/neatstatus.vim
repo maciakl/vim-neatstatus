@@ -14,6 +14,26 @@
 set ls=2 " Always show status line
 let g:last_mode=""
 
+" Color Scheme Settings
+" You can redefine these in your .vimrc
+
+" Black on Green
+let g:NSColor_normal    = 'guifg=#000000 guibg=#7dcc7d gui=NONE ctermfg=0   ctermbg=2 cterm=NONE'
+" White on Red
+let g:NSColor_insert    = 'guifg=#ffffff guibg=#ff0000 gui=bold ctermfg=15  ctermbg=9 cterm=bold'
+" Yellow on Blue
+let g:NSColor_replace   = 'guifg=#ffff00 guibg=#5b7fbb gui=bold ctermfg=190 ctermbg=67 cterm=bold'
+" White on Purple
+let g:NSColor_visual    = 'guifg=#ffffff guibg=#810085 gui=NONE ctermfg=15  ctermbg=53 cterm=NONE'
+" White on Black
+let g:NSColor_position  = 'guifg=#ffffff guibg=#000000          ctermfg=15	ctermbg=0'
+" White on Pink
+let g:NSColor_modified  = 'guifg=#ffffff guibg=#ff00ff          ctermfg=15	ctermbg=5'
+" Pink on Black
+let g:NSColor_line      = 'guifg=#ff00ff guibg=#000000 gui=bold ctermfg=207	ctermbg=0  cterm=bold'
+" Black on Cyan
+let g:NSColor_filetype  = 'guifg=#000000 guibg=#00ffff gui=bold ctermfg=0	ctermbg=51 cterm=bold'
+
 "==============================================================================
 "==============================================================================
 
@@ -21,14 +41,14 @@ let g:last_mode=""
 function! SetNeatstatusColorscheme()
 
     " Basic color presets
-    hi User1 guifg=#000000  guibg=#7dcc7d   ctermfg=0  	ctermbg=2						" BLACK ON GREEN
-    hi User2 guifg=#ffffff  guibg=#5b7fbb   ctermfg=15	ctermbg=67						" WHITE ON BLUE
-    hi User3 guifg=#000000  guibg=#FF0000   ctermfg=15	ctermbg=9						" BLACK ON ORANGE
-    hi User4 guifg=#ffffff  guibg=#810085   ctermfg=15	ctermbg=53						" WHITE ON PURPLE
-    hi User5 guifg=#ffffff  guibg=#000000   ctermfg=15	ctermbg=0						" WHITE ON BLACK
-    hi User6 guifg=#ffffff  guibg=#ff00ff   ctermfg=15	ctermbg=5						" WHITE ON PINK
-    hi User7 guifg=#ff00ff  guibg=#000000   ctermfg=207	ctermbg=0	gui=bold cterm=bold " PINK ON BLACK
-    hi User8 guifg=#000000  guibg=#00ffff   ctermfg=0	ctermbg=51	gui=bold cterm=bold " BLACK ON CYAN
+    exec 'hi User1 '.g:NSColor_normal
+    exec 'hi User2 '.g:NSColor_replace
+    exec 'hi User3 '.g:NSColor_insert
+    exec 'hi User4 '.g:NSColor_visual
+    exec 'hi User5 '.g:NSColor_position
+    exec 'hi User6 '.g:NSColor_modified
+    exec 'hi User7 '.g:NSColor_line
+    exec 'hi User8 '.g:NSColor_filetype
 
 endfunc
 
@@ -50,13 +70,13 @@ endfunc
 " Change the values for User1 color preset depending on mode
 function! ModeChanged(mode)
 
-    if     a:mode ==# "n"  | hi User1 guifg=#000000 guibg=#7dcc7d gui=NONE ctermfg=0 ctermbg=2 cterm=NONE
-    elseif a:mode ==# "i"  | hi User1 guifg=#ffffff guibg=#ff0000 gui=bold ctermfg=15 ctermbg=9 cterm=bold
-    elseif a:mode ==# "r"  | hi User1 guifg=#ffff00 guibg=#5b7fbb gui=bold ctermfg=190 ctermbg=67 cterm=bold
-    "elseif a:mode ==# "v"  | hi User1 guifg=#ffffff guibg=#810085 ctermfg=15 ctermbg=53
-    "elseif a:mode ==# "V"  | hi User1 guifg=#ffffff guibg=#810085 ctermfg=15 ctermbg=53
-    "elseif a:mode ==# "^V" | hi User1 guifg=#ffffff guibg=#810085 ctermfg=15 ctermbg=53
-    else                   | hi User1 guifg=#ffffff guibg=#810085 gui=NONE ctermfg=15 ctermbg=53 cterm=NONE
+    if     a:mode ==# "n"  | exec 'hi User1 '.g:NSColor_normal
+    elseif a:mode ==# "i"  | exec 'hi User1 '.g:NSColor_insert
+    elseif a:mode ==# "r"  | exec 'hi User1 '.g:NSColor_replace
+    "elseif a:mode ==# "v"  | exec 'hi User1 '.g:NSColor_visual
+    "elseif a:mode ==# "V"  | exec 'hi User1 '.g:NSColor_visual
+    "elseif a:mode ==# "^V" | exec 'hi User1 '.g:NSColor_visual
+    else                   | exec 'hi User1 '.g:NSColor_visual
     endif
    
     " Sometimes in console the status line starts repeating so we redraw
