@@ -1,5 +1,11 @@
 " NeatStatus (c) 2012 Lukasz Grzegorz Maciak
 " Neat and simple status line - because Powerline is overrated
+"    _   _            _   ____  _        _             
+"   | \ | | ___  __ _| |_/ ___|| |_ __ _| |_ _   _ ___ 
+"   |  \| |/ _ \/ _` | __\___ \| __/ _` | __| | | / __|
+"   | |\  |  __/ (_| | |_ ___) | || (_| | |_| |_| \__ \
+"   |_| \_|\___|\__,_|\__|____/ \__\__,_|\__|\__,_|___/
+"   Vim plugin by Luke Maciak (c) 2012
 "
 " Loosely based on a script by Tomas Restrepo (winterdom.com)
 " " Original available here:
