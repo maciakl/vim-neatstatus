@@ -18,9 +18,9 @@ Here is how this status line will look in Gvim on Windows with the Solarized col
 
 Information provided from left to right:
 
-* Vim Mode (green box)
-* Server name / session name (black box)
-* File path
+* Mode Indicator - changes color depending on the editor mode
+* Server/Session - displays vim servername (graphical) or terminal name (cli)
+* File path for the file associated with current buffer
 * File type (eg. python, ruby, etc..)
 * File format (eg. unix, dos, etc..)
 * File encoding (eg. utf8, latin1, etc..)
@@ -48,6 +48,31 @@ If your .vim is under source control with Git do this instead:
 
 Installing without pathogen:
 
-  * Copy `neatstatus.vim` to `~/.vim/plugins` directory
+  * Copy `neatstatus.vim` to `~/.vim/after/plugins` directory
 
-  [ns]: http://i.imgur.com/7ySiHql.png "Neat Statusline"
+Configuration
+---
+
+You can configure the colors of the status line elements by defining the following global vars in your `.vimrc`:
+
+* `g:NSColor_normal` - the color of the mode indicator when in normal mode
+* `g:NSColor_insert` - the color of the mode indicator when in insert mode
+* `g:NSColor_replace` - the color of the mode indicator when in replace mode
+* `g:NSColor_position` - the color of the cursor position box (and session box)
+* `g:NSColor_line` - the color of the line number in the cursor position box
+* `g:NSColor_modified` - the color of the "modified" indicator on the right
+* `g:NSColor_filetype` - the color of the filetype box
+
+Make sure you define values both for graphical and terminal clients when you do this. Here is
+a quick example that shows you hot to redefine the insert mode colors:
+
+    let g:NSColor_insert = 'guifg=#ffffff guibg=#ff0000 gui=bold ctermfg=15 ctermbg=9 cterm=bold'
+
+Note that these only affect the small boxes created by NeatStatus. Your status line will remain
+the default color as per your color scheme. This works very well if you also happen to use the
+Obvious-Mode plugin. 
+
+If you want to style your status line, you can do it in your `.vimrc` normally using the `hi StatusLine`
+and `hi StatusLineNC` commands.
+
+[ns]: http://i.imgur.com/7ySiHql.png "Neat Statusline"

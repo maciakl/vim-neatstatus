@@ -154,7 +154,24 @@ if has('statusline')
     "
     function! SetStatusLineStyle()
 
-        let g:neatstatus_session = strlen(v:servername)>0? (v:servername) : 'term'
+        " Determine the name of the session or terminal
+        if (strlen(v:servername)>0)
+            " If running a GUI vim with servername, then use that
+            let g:neatstatus_session = v:servername
+        elseif !has('gui_running')
+            " If running CLI vim say TMUX or use the terminal name.
+            if (exists("$TMUX"))
+                let g:neatstatus_session = 'tmux'
+            else
+                " Giving preference to color-term because that might be more
+                " meaningful in graphical environments. Eg. my $TERM is
+                " usually screen256-color 90% of the time.
+                let g:neatstatus_session = exists("$COLORTERM") ? $COLORTERM : $TERM
+            endif
+        else
+            " idk, my bff jill
+            let g:neatstatus_session = '?'
+        endif
 
         let &stl=""
         " mode (changes color)
@@ -200,7 +217,6 @@ if has('statusline')
 
     " Make sure the statusbar is reloaded late to pick up servername
     au ColorScheme,VimEnter * call SetStatusLineStyle()
-    "au BufRead,BufNew,BufWritePost,FileWritePost,ColorScheme,VimEnter * call SetStatusLineStyle()
 
     " Switch between the normal and vim-debug modes in the status line
     nmap _ds :call SetStatusLineStyle()<CR>
