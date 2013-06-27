@@ -1,13 +1,18 @@
 Neat Status Line
 ===
 
-This is a modified version of a nice vim status line script created by Tomas Restrepo.
+Yet another status line plugin. The aim of Neat Status is to provide neat, and 
+simple UI with just basic information and no bells and whistles for those users
+who consider things like Powerline to be overkill.
+
+Neat Status is loosely based on the status line script created by Tomas Restrepo.
 The original can be seen here:
 
   * http://winterdom.com/2007/06/vimstatusline
 
-This version has small readability modifications. Main purposed of hosting it here is
-to make this script compatible with Pathogen plugin manager.
+The basic idea is roughly the same, but the script was heavily modified and made
+more customizable and modular to work better as a plugin rather than just a
+`.vimrc` snippet.
 
 Screenshots
 -----------
