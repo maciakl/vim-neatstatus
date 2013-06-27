@@ -17,42 +17,42 @@ let g:last_mode=""
 " Color Scheme Settings
 " You can redefine these in your .vimrc
 
-if !exists(g:NSColor_normal)
+if !exists('g:NSColor_normal')
     " Black on Green
     let g:NSColor_normal    = 'guifg=#000000 guibg=#7dcc7d gui=NONE ctermfg=0 ctermbg=2 cterm=NONE'
 endif
 
-if !exists(g:NSColor_insert)
+if !exists('g:NSColor_insert')
     " White on Red
     let g:NSColor_insert    = 'guifg=#ffffff guibg=#ff0000 gui=bold ctermfg=15 ctermbg=9 cterm=bold'
 endif
 
-if !exists(g:NSColor_replace)
+if !exists('g:NSColor_replace')
     " Yellow on Blue
     let g:NSColor_replace='guifg=#ffff00 guibg=#5b7fbb gui=bold ctermfg=190 ctermbg=67 cterm=bold'
 endif
 
-if !exists(g:NSColor_visual)
+if !exists('g:NSColor_visual')
     " White on Purple
     let g:NSColor_visual='guifg=#ffffff guibg=#810085 gui=NONE ctermfg=15 ctermbg=53 cterm=NONE'
 endif
 
-if !exists(g:NSColor_position)
+if !exists('g:NSColor_position')
     " White on Black
     let g:NSColor_position='guifg=#ffffff guibg=#000000 ctermfg=15 ctermbg=0'
 endif
 
-if !exists(g:NSColor_modified)
+if !exists('g:NSColor_modified')
     " White on Pink
     let g:NSColor_modified='guifg=#ffffff guibg=#ff00ff ctermfg=15 ctermbg=5'
 endif
 
-if !exists(g:NSColor_line)
+if !exists('g:NSColor_line')
     " Pink on Black
     let g:NSColor_line='guifg=#ff00ff guibg=#000000 gui=bold ctermfg=207 ctermbg=0 cterm=bold'
 endif
 
-if !exists(g:NSColor_filetype)
+if !exists('g:NSColor_filetype')
     " Black on Cyan
     let g:NSColor_filetype='guifg=#000000 guibg=#00ffff gui=bold ctermfg=0 ctermbg=51 cterm=bold'
 endif
