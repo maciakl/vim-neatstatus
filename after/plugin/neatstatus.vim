@@ -17,22 +17,45 @@ let g:last_mode=""
 " Color Scheme Settings
 " You can redefine these in your .vimrc
 
-" Black on Green
-let g:NSColor_normal    = 'guifg=#000000 guibg=#7dcc7d gui=NONE ctermfg=0   ctermbg=2 cterm=NONE'
-" White on Red
-let g:NSColor_insert    = 'guifg=#ffffff guibg=#ff0000 gui=bold ctermfg=15  ctermbg=9 cterm=bold'
-" Yellow on Blue
-let g:NSColor_replace   = 'guifg=#ffff00 guibg=#5b7fbb gui=bold ctermfg=190 ctermbg=67 cterm=bold'
-" White on Purple
-let g:NSColor_visual    = 'guifg=#ffffff guibg=#810085 gui=NONE ctermfg=15  ctermbg=53 cterm=NONE'
-" White on Black
-let g:NSColor_position  = 'guifg=#ffffff guibg=#000000          ctermfg=15	ctermbg=0'
-" White on Pink
-let g:NSColor_modified  = 'guifg=#ffffff guibg=#ff00ff          ctermfg=15	ctermbg=5'
-" Pink on Black
-let g:NSColor_line      = 'guifg=#ff00ff guibg=#000000 gui=bold ctermfg=207	ctermbg=0  cterm=bold'
-" Black on Cyan
-let g:NSColor_filetype  = 'guifg=#000000 guibg=#00ffff gui=bold ctermfg=0	ctermbg=51 cterm=bold'
+if !exists(g:NSColor_normal)
+    " Black on Green
+    let g:NSColor_normal    = 'guifg=#000000 guibg=#7dcc7d gui=NONE ctermfg=0 ctermbg=2 cterm=NONE'
+endif
+
+if !exists(g:NSColor_insert)
+    " White on Red
+    let g:NSColor_insert    = 'guifg=#ffffff guibg=#ff0000 gui=bold ctermfg=15 ctermbg=9 cterm=bold'
+endif
+
+if !exists(g:NSColor_replace)
+    " Yellow on Blue
+    let g:NSColor_replace='guifg=#ffff00 guibg=#5b7fbb gui=bold ctermfg=190 ctermbg=67 cterm=bold'
+endif
+
+if !exists(g:NSColor_visual)
+    " White on Purple
+    let g:NSColor_visual='guifg=#ffffff guibg=#810085 gui=NONE ctermfg=15 ctermbg=53 cterm=NONE'
+endif
+
+if !exists(g:NSColor_position)
+    " White on Black
+    let g:NSColor_position='guifg=#ffffff guibg=#000000 ctermfg=15 ctermbg=0'
+endif
+
+if !exists(g:NSColor_modified)
+    " White on Pink
+    let g:NSColor_modified='guifg=#ffffff guibg=#ff00ff ctermfg=15 ctermbg=5'
+endif
+
+if !exists(g:NSColor_line)
+    " Pink on Black
+    let g:NSColor_line='guifg=#ff00ff guibg=#000000 gui=bold ctermfg=207 ctermbg=0 cterm=bold'
+endif
+
+if !exists(g:NSColor_filetype)
+    " Black on Cyan
+    let g:NSColor_filetype='guifg=#000000 guibg=#00ffff gui=bold ctermfg=0 ctermbg=51 cterm=bold'
+endif
 
 "==============================================================================
 "==============================================================================
@@ -73,16 +96,16 @@ function! ModeChanged(mode)
     if     a:mode ==# "n"  | exec 'hi User1 '.g:NSColor_normal
     elseif a:mode ==# "i"  | exec 'hi User1 '.g:NSColor_insert
     elseif a:mode ==# "r"  | exec 'hi User1 '.g:NSColor_replace
-    "elseif a:mode ==# "v"  | exec 'hi User1 '.g:NSColor_visual
-    "elseif a:mode ==# "V"  | exec 'hi User1 '.g:NSColor_visual
-    "elseif a:mode ==# "^V" | exec 'hi User1 '.g:NSColor_visual
+        "elseif a:mode ==# "v"  | exec 'hi User1 '.g:NSColor_visual
+        "elseif a:mode ==# "V"  | exec 'hi User1 '.g:NSColor_visual
+        "elseif a:mode ==# "^V" | exec 'hi User1 '.g:NSColor_visual
     else                   | exec 'hi User1 '.g:NSColor_visual
     endif
-   
+
     " Sometimes in console the status line starts repeating so we redraw
     " there is probably a better way to fix this
     if !has('gui_running')
-    	redraw!
+        redraw!
     endif
 endfunc
 
@@ -90,7 +113,7 @@ endfunc
 "==============================================================================
 
 if has('statusline')
-	
+
     " set up color scheme now
     call SetNeatstatusColorscheme()
 
@@ -165,7 +188,7 @@ if has('statusline')
         let &stl.="COL %c%V |"
         " modified / unmodified (purple)
         let &stl.="%(%6* %{&modified ? 'modified':''} %)"
-        
+
     endfunc
 
     au InsertEnter  * call ModeChanged(v:insertmode)
@@ -174,7 +197,7 @@ if has('statusline')
 
     " whenever the color scheme changes re-apply the colors
     au ColorScheme * call SetNeatstatusColorscheme()
-   
+
     " Make sure the statusbar is reloaded late to pick up servername
     au ColorScheme,VimEnter * call SetStatusLineStyle()
     "au BufRead,BufNew,BufWritePost,FileWritePost,ColorScheme,VimEnter * call SetStatusLineStyle()
