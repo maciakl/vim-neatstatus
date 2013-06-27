@@ -3,4 +3,4 @@ deploy:
 	git commit -a
 	git push
 	cd ~/.vim/bundle/vim-neatstatus; \
-		git pull
+		git pull origin master
