@@ -69,6 +69,7 @@ if has('statusline')
     call SetNeatstatusColorscheme()
 
     " Status line detail:
+    " -------------------
     "
     " %f    file name
     " %F    file path
@@ -148,11 +149,9 @@ if has('statusline')
     " whenever the color scheme changes re-apply the colors
     au ColorScheme * call SetNeatstatusColorscheme()
    
-    " Reset the status bar on startup and when reading or writing a file.
-    " Some of this is probably not needed; This is done to ensure the
-    " servername gets picked up when vim actually displays a file. More tweaks
-    " needed here.
-    au BufRead,BufNew,BufWritePost,FileWritePost,ColorScheme,VimEnter * call SetStatusLineStyle()
+    " Make sure the statusbar is reloaded late to pick up servername
+    au ColorScheme,VimEnter * call SetStatusLineStyle()
+    "au BufRead,BufNew,BufWritePost,FileWritePost,ColorScheme,VimEnter * call SetStatusLineStyle()
 
     " Switch between the normal and vim-debug modes in the status line
     nmap _ds :call SetStatusLineStyle()<CR>
