@@ -8,9 +8,6 @@
 set ls=2 " Always show status line
 let g:last_mode=""
 
-" set up color scheme now
-call SetNeatstatusColorscheme()
-
 "==============================================================================
 "==============================================================================
 
@@ -67,6 +64,9 @@ endfunc
 "==============================================================================
 
 if has('statusline')
+	
+    " set up color scheme now
+    call SetNeatstatusColorscheme()
 
     " Status line detail:
     "
