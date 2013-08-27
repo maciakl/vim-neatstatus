@@ -115,11 +115,15 @@ function! ModeChanged(mode)
     return ''
 endfunc
 
+" Resets the updatetime back to 4000 and update mode color. Called when
+" returning to normal mode from a visual mode.
 function! ResetModeColor()
     set updatetime=4000
     call ModeChanged(mode())
 endfunc
 
+" Sets updatetime to 0 and updates mode color. Called when entering a visual
+" mode.
 function! SetVisualModeColor()
     set updatetime=0
     call ModeChanged(mode())
