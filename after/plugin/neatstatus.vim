@@ -184,9 +184,9 @@ if has('statusline')
         
         let &stl=""
         " mode (changes color)
-        let &stl.="%1*\ %{Mode()} %0*".g:NeatStatusLine_separator 
+        let &stl.="%1*\ %{Mode()} %0*"
         " session name
-        let &stl.="%5* %{g:neatstatus_session} %0*".g:NeatStatusLine_separator
+        let &stl.="%5* %{g:neatstatus_session} %0*"
         " file path
         let &stl.=" %<%F "
         " read only, modified, modifiable flags in brackets
@@ -199,19 +199,19 @@ if has('statusline')
         let &stl.="%(%{(&ro!=0?'(readonly)':'')} ".g:NeatStatusLine_separator." %)"
 
         " file type (eg. python, ruby, etc..)
-        let &stl.="%8*%( %{&filetype} %)%0*".g:NeatStatusLine_separator." "
+        let &stl.="%8*%( %{&filetype} %)%0* "
         " file format (eg. unix, dos, etc..)
         let &stl.="%{&fileformat} ".g:NeatStatusLine_separator." "
         " file encoding (eg. utf8, latin1, etc..)
         let &stl.="%(%{(&fenc!=''?&fenc:&enc)} ".g:NeatStatusLine_separator." %)"
         " buffer number
-        let &stl.="BUF #%n ".g:NeatStatusLine_separator 
+        let &stl.="BUF #%n "
         "line number (pink) / total lines
-        let &stl.="%5* LN %7*%l%5*/%L\ %0*".g:NeatStatusLine_separator." "
+        let &stl.="%5* LN %7*%l%5*/%L\ %0* "
         " percentage done
         let &stl.="(%p%%) ".g:NeatStatusLine_separator." "
         " column number
-        let &stl.="COL %c%V ".g:NeatStatusLine_separator
+        let &stl.="COL %c%V "
         " modified / unmodified (purple)
         let &stl.="%(%6* %{&modified ? 'modified':''} %)"
 
