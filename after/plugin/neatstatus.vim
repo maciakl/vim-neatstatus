@@ -228,6 +228,8 @@ if has('statusline')
 
     endfunc
 
+    " Set visual mode color upon keypress since there are no events mapping to
+    " entering/exiting visual mode.
     vnoremap <silent> <expr> <SID>SetVisualModeColor SetVisualModeColor()
     nnoremap <silent> <script> v v<SID>SetVisualModeColor
     nnoremap <silent> <script> V V<SID>SetVisualModeColor
