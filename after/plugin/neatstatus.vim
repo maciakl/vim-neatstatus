@@ -161,6 +161,8 @@ if has('statusline')
     " %c%V  column number, absolute column number
     " &modified         whether or not file was modified
     "
+    " %-5.x - syntax to add 5 chars of padding to some element x
+    "
     function! SetStatusLineStyle()
 
         " Determine the name of the session or terminal
@@ -207,11 +209,11 @@ if has('statusline')
         " buffer number
         let &stl.="BUF #%n "
         "line number (pink) / total lines
-        let &stl.="%5* LN %7*%l%5*/%L\ %0* "
+        let &stl.="%5*  LN %7*%-4.l%5*/%-4.L\ %0* "
         " percentage done
-        let &stl.="(%p%%) ".g:NeatStatusLine_separator." "
-        " column number
-        let &stl.="COL %c%V "
+        let &stl.="(%-3.p%%) ".g:NeatStatusLine_separator." "
+        " column number (minimum width is 4)
+        let &stl.="COL %-3.c "
         " modified / unmodified (purple)
         let &stl.="%(%6* %{&modified ? 'modified':''} %)"
 
