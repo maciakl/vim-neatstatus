@@ -100,12 +100,9 @@ function! ModeChanged(mode)
     if     a:mode ==# "n"   | exec 'hi User1 '.g:NeatStatusLine_color_normal
     elseif a:mode ==# "i"   | exec 'hi User1 '.g:NeatStatusLine_color_insert
     elseif a:mode ==# "r"   | exec 'hi User1 '.g:NeatStatusLine_color_replace
-
-    " FIXME: Visual mode color changes currently do not work.
-    "elseif a:mode ==# "v"  | exec 'hi User1 '.g:NeatStatusLine_color_visual
-    "elseif a:mode ==# "V"  | exec 'hi User1 '.g:NeatStatusLine_color_visual
-    "elseif a:mode ==# "" | exec 'hi User1 '.g:NeatStatusLine_color_visual
-
+    elseif a:mode ==# "v"   | exec 'hi User1 '.g:NeatStatusLine_color_visual
+    elseif a:mode ==# "V"   | exec 'hi User1 '.g:NeatStatusLine_color_visual
+    elseif a:mode ==# ""  | exec 'hi User1 '.g:NeatStatusLine_color_visual
     else                    | exec 'hi User1 '.g:NeatStatusLine_color_visual
     endif
 
@@ -116,6 +113,20 @@ function! ModeChanged(mode)
     endif
 
     return ''
+endfunc
+
+" Resets the updatetime back to 4000 and update mode color. Called when
+" returning to normal mode from a visual mode.
+function! ResetModeColor()
+    set updatetime=4000
+    call ModeChanged(mode())
+endfunc
+
+" Sets updatetime to 0 and updates mode color. Called when entering a visual
+" mode.
+function! SetVisualModeColor()
+    set updatetime=0
+    call ModeChanged(mode())
 endfunc
 
 "==============================================================================
@@ -217,9 +228,17 @@ if has('statusline')
 
     endfunc
 
+    " Set visual mode color upon keypress since there are no events mapping to
+    " entering/exiting visual mode.
+    vnoremap <silent> <expr> <SID>SetVisualModeColor SetVisualModeColor()
+    nnoremap <silent> <script> v v<SID>SetVisualModeColor
+    nnoremap <silent> <script> V V<SID>SetVisualModeColor
+    nnoremap <silent> <script> <C-v> <C-v><SID>SetVisualModeColor
+
     au InsertEnter  * call ModeChanged(v:insertmode)
     au InsertChange * call ModeChanged(v:insertmode)
-    au InsertLeave  * call ModeChanged(mode())
+    au InsertLeave  * call ResetModeColor()
+    au CursorHold * call ResetModeColor()
 
     " whenever the color scheme changes re-apply the colors
     au ColorScheme * call SetNeatstatusColorscheme()
