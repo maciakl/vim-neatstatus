@@ -14,6 +14,12 @@ The basic idea is roughly the same, but the script was heavily modified and made
 more customizable and modular to work better as a plugin rather than just a
 `.vimrc` snippet.
 
+**Note:** this is not a drop-in replacement for Powerline but rather a much
+simpler and streamlined plugin. The aim of the project is not to achieve one
+to one feature compatibility but merely to implement a narrow subset of said
+features for users who want something simple and easy. If you would like a
+robust, feature-full Powerline replacement you should check out [Vim-Airline][va].
+
 Screenshots
 -----------
 
@@ -87,3 +93,4 @@ You can also change the separator character that divides the boxes by changing:
 By default the separator is set to the pipe `|` character. You can disable the separator by setting it to empty string.
 
 [ns]: http://i.imgur.com/7ySiHql.png "Neat Statusline"
+[va]: https://github.com/bling/vim-airline
