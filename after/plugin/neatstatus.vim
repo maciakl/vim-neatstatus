@@ -24,15 +24,15 @@ if !exists('g:NeatStatusLine_color_insert')   | let g:NeatStatusLine_color_inser
 " Yellow on Blue
 if !exists('g:NeatStatusLine_color_replace')  | let g:NeatStatusLine_color_replace  = 'guifg=#ffff00 guibg=#5b7fbb gui=bold ctermfg=190 ctermbg=67 cterm=bold' | endif
 " White on Purple
-if !exists('g:NeatStatusLine_color_visual')   | let g:NeatStatusLine_color_visual   = 'guif g=#ffffff guibg=#810085 gui=NONE ctermfg=15 ctermbg=53 cterm=NONE' | endif
+if !exists('g:NeatStatusLine_color_visual')   | let g:NeatStatusLine_color_visual   = 'guifg=#ffffff guibg=#810085 gui=NONE ctermfg=15 ctermbg=53 cterm=NONE'  | endif
 " White on Black
-if !exists('g:NeatStatusLine_color_position') | let g:NeatStatusLine_color_position = 'guif g=#ffffff guibg=#000000 ctermfg=15 ctermbg=0'                      | endif
+if !exists('g:NeatStatusLine_color_position') | let g:NeatStatusLine_color_position = 'guifg=#ffffff guibg=#000000 ctermfg=15 ctermbg=0'                       | endif
 " White on Pink
-if !exists('g:NeatStatusLine_color_modified') | let g:NeatStatusLine_color_modified = 'guif g=#ffffff guibg=#ff00ff ctermfg=15 ctermbg=5'                      | endif
+if !exists('g:NeatStatusLine_color_modified') | let g:NeatStatusLine_color_modified = 'guifg=#ffffff guibg=#ff00ff ctermfg=15 ctermbg=5'                       | endif
 " Pink on Black
-if !exists('g:NeatStatusLine_color_line')     | let g:NeatStatusLine_color_line     = 'guif g=#ff00ff guibg=#000000 gui=bold ctermfg=207 ctermbg=0 cterm=bold' | endif
+if !exists('g:NeatStatusLine_color_line')     | let g:NeatStatusLine_color_line     = 'guifg=#ff00ff guibg=#000000 gui=bold ctermfg=207 ctermbg=0 cterm=bold'  | endif
 " Black on Cyan
-if !exists('g:NeatStatusLine_color_filetype') | let g:NeatStatusLine_color_filetype = 'guif g=#000000 guibg=#00ffff gui=bold ctermfg=0 ctermbg=51 cterm=bold'  | endif
+if !exists('g:NeatStatusLine_color_filetype') | let g:NeatStatusLine_color_filetype = 'guifg=#000000 guibg=#00ffff gui=bold ctermfg=0 ctermbg=51 cterm=bold'   | endif
 
 if !exists('g:NeatStatusLine_separator')      | let g:NeatStatusLine_separator = '|' | endif
 
