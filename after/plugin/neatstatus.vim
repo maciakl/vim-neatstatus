@@ -172,9 +172,9 @@ if has('statusline')
 
     "FIXME: hack to fix the repeated statusline issue in console version
     if !has('gui_running')
-        au InsertEnter  * call redraw!
-        au InsertChange * call redraw!
-        au InsertLeave  * call redraw!
+        au InsertEnter  * redraw!
+        au InsertChange * redraw!
+        au InsertLeave  * redraw!
     endif
 
     " whenever the color scheme changes re-apply the colors
