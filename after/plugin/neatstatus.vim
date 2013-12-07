@@ -17,49 +17,24 @@ let g:last_mode=""
 " Color Scheme Settings
 " You can redefine these in your .vimrc
 
-if !exists('g:NeatStatusLine_color_normal')
-    " Black on Green
-    let g:NeatStatusLine_color_normal    = 'guifg=#000000 guibg=#7dcc7d gui=NONE ctermfg=0 ctermbg=2 cterm=NONE'
-endif
+" Black on Green
+if !exists('g:NeatStatusLine_color_normal')   | let g:NeatStatusLine_color_normal   = 'guifg=#000000 guibg=#7dcc7d gui=NONE ctermfg=0 ctermbg=2 cterm=NONE'    | endif
+" White on Red
+if !exists('g:NeatStatusLine_color_insert')   | let g:NeatStatusLine_color_insert   = 'guifg=#ffffff guibg=#ff0000 gui=bold ctermfg=15 ctermbg=9 cterm=bold'   | endif
+" Yellow on Blue
+if !exists('g:NeatStatusLine_color_replace')  | let g:NeatStatusLine_color_replace  = 'guifg=#ffff00 guibg=#5b7fbb gui=bold ctermfg=190 ctermbg=67 cterm=bold' | endif
+" White on Purple
+if !exists('g:NeatStatusLine_color_visual')   | let g:NeatStatusLine_color_visual   = 'guif g=#ffffff guibg=#810085 gui=NONE ctermfg=15 ctermbg=53 cterm=NONE' | endif
+" White on Black
+if !exists('g:NeatStatusLine_color_position') | let g:NeatStatusLine_color_position = 'guif g=#ffffff guibg=#000000 ctermfg=15 ctermbg=0'                      | endif
+" White on Pink
+if !exists('g:NeatStatusLine_color_modified') | let g:NeatStatusLine_color_modified = 'guif g=#ffffff guibg=#ff00ff ctermfg=15 ctermbg=5'                      | endif
+" Pink on Black
+if !exists('g:NeatStatusLine_color_line')     | let g:NeatStatusLine_color_line     = 'guif g=#ff00ff guibg=#000000 gui=bold ctermfg=207 ctermbg=0 cterm=bold' | endif
+" Black on Cyan
+if !exists('g:NeatStatusLine_color_filetype') | let g:NeatStatusLine_color_filetype = 'guif g=#000000 guibg=#00ffff gui=bold ctermfg=0 ctermbg=51 cterm=bold'  | endif
 
-if !exists('g:NeatStatusLine_color_insert')
-    " White on Red
-    let g:NeatStatusLine_color_insert    = 'guifg=#ffffff guibg=#ff0000 gui=bold ctermfg=15 ctermbg=9 cterm=bold'
-endif
-
-if !exists('g:NeatStatusLine_color_replace')
-    " Yellow on Blue
-    let g:NeatStatusLine_color_replace='guifg=#ffff00 guibg=#5b7fbb gui=bold ctermfg=190 ctermbg=67 cterm=bold'
-endif
-
-if !exists('g:NeatStatusLine_color_visual')
-    " White on Purple
-    let g:NeatStatusLine_color_visual='guifg=#ffffff guibg=#810085 gui=NONE ctermfg=15 ctermbg=53 cterm=NONE'
-endif
-
-if !exists('g:NeatStatusLine_color_position')
-    " White on Black
-    let g:NeatStatusLine_color_position='guifg=#ffffff guibg=#000000 ctermfg=15 ctermbg=0'
-endif
-
-if !exists('g:NeatStatusLine_color_modified')
-    " White on Pink
-    let g:NeatStatusLine_color_modified='guifg=#ffffff guibg=#ff00ff ctermfg=15 ctermbg=5'
-endif
-
-if !exists('g:NeatStatusLine_color_line')
-    " Pink on Black
-    let g:NeatStatusLine_color_line='guifg=#ff00ff guibg=#000000 gui=bold ctermfg=207 ctermbg=0 cterm=bold'
-endif
-
-if !exists('g:NeatStatusLine_color_filetype')
-    " Black on Cyan
-    let g:NeatStatusLine_color_filetype='guifg=#000000 guibg=#00ffff gui=bold ctermfg=0 ctermbg=51 cterm=bold'
-endif
-
-if !exists('g:NeatStatusLine_separator')
-    let g:NeatStatusLine_separator = '|'
-endif
+if !exists('g:NeatStatusLine_separator')      | let g:NeatStatusLine_separator = '|' | endif
 
 "==============================================================================
 "==============================================================================
@@ -81,42 +56,18 @@ endfunc
 
 " pretty mode display - converts the one letter status notifiers to words
 function! Mode()
+    redraw
     let l:mode = mode()
     
-    if     mode ==# "n"  | return "NORMAL"
-    elseif mode ==# "i"  | return "INSERT"
-    elseif mode ==# "R"  | return "REPLACE"
-    elseif mode ==# "v"  | return "VISUAL"
-    elseif mode ==# "V"  | return "V-LINE"
-    elseif mode ==# "" | return "V-BLOCK"
+    if     mode ==# "n"  | exec 'hi User1 '.g:NeatStatusLine_color_normal  | return "NORMAL"
+    elseif mode ==# "i"  | exec 'hi User1 '.g:NeatStatusLine_color_insert  | return "INSERT"
+    elseif mode ==# "R"  | exec 'hi User1 '.g:NeatStatusLine_color_replace | return "REPLACE"
+    elseif mode ==# "v"  | exec 'hi User1 '.g:NeatStatusLine_color_visual  | return "VISUAL"
+    elseif mode ==# "V"  | exec 'hi User1 '.g:NeatStatusLine_color_visual  | return "V-LINE"
+    elseif mode ==# "" | exec 'hi User1 '.g:NeatStatusLine_color_visual  | return "V-BLOCK"
     else                 | return l:mode
     endif
-
 endfunc    
-
-" Change the values for User1 color preset depending on mode
-function! ModeChanged(mode)
-
-    if     a:mode ==# "n"   | exec 'hi User1 '.g:NeatStatusLine_color_normal
-    elseif a:mode ==# "i"   | exec 'hi User1 '.g:NeatStatusLine_color_insert
-    elseif a:mode ==# "r"   | exec 'hi User1 '.g:NeatStatusLine_color_replace
-
-    " FIXME: Visual mode color changes currently do not work.
-    "elseif a:mode ==# "v"  | exec 'hi User1 '.g:NeatStatusLine_color_visual
-    "elseif a:mode ==# "V"  | exec 'hi User1 '.g:NeatStatusLine_color_visual
-    "elseif a:mode ==# "" | exec 'hi User1 '.g:NeatStatusLine_color_visual
-
-    else                    | exec 'hi User1 '.g:NeatStatusLine_color_visual
-    endif
-
-    " Sometimes in console the status line starts repeating so we redraw
-    " there is probably a better way to fix this
-    if !has('gui_running')
-        redraw!
-    endif
-
-    return ''
-endfunc
 
 "==============================================================================
 "==============================================================================
@@ -183,7 +134,7 @@ if has('statusline')
             " idk, my bff jill
             let g:neatstatus_session = '?'
         endif
-        
+
         let &stl=""
         " mode (changes color)
         let &stl.="%1*\ %{Mode()} %0*"
@@ -219,9 +170,9 @@ if has('statusline')
 
     endfunc
 
-    au InsertEnter  * call ModeChanged(v:insertmode)
-    au InsertChange * call ModeChanged(v:insertmode)
-    au InsertLeave  * call ModeChanged(mode())
+    au InsertEnter  * call Mode()
+    au InsertChange * call Mode()
+    au InsertLeave  * call Mode()
 
     " whenever the color scheme changes re-apply the colors
     au ColorScheme * call SetNeatstatusColorscheme()
