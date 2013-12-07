@@ -170,9 +170,9 @@ if has('statusline')
 
     endfunc
 
-    au InsertEnter  * call Mode()
-    au InsertChange * call Mode()
-    au InsertLeave  * call Mode()
+    "au InsertEnter  * call Mode()
+    "au InsertChange * call Mode()
+    "au InsertLeave  * call Mode()
 
     " whenever the color scheme changes re-apply the colors
     au ColorScheme * call SetNeatstatusColorscheme()
