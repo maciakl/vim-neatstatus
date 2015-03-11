@@ -1,6 +1,8 @@
 Neat Status Line
 ===
 
+[![endorse](https://api.coderwall.com/luke/endorsecount.png)](https://coderwall.com/luke)
+
 Yet another status line plugin. The aim of Neat Status is to provide neat, and 
 simple UI with just basic information and no bells and whistles for those users
 who consider things like Powerline to be overkill.
