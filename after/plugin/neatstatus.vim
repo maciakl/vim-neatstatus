@@ -118,8 +118,12 @@ if has('statusline')
 
         " Determine the name of the session or terminal
         if (strlen(v:servername)>0)
-            " If running a GUI vim with servername, then use that
-            let g:neatstatus_session = v:servername
+            if v:servername =~ 'nvim'
+                let g:neatstatus_session = 'neovim'
+            else
+                " If running a GUI vim with servername, then use that
+                let g:neatstatus_session = v:servername
+            endif
         elseif !has('gui_running')
             " If running CLI vim say TMUX or use the terminal name.
             if (exists("$TMUX"))
